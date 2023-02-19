@@ -9,7 +9,7 @@
 </div>
 <div class="app-container">
 	<!-- Welcome Message -->
-	<div class="panel">
+	<div class="panel" id="left-panel">
 		<h2>State List DropDown</h2>
 		<select id="data-option-list" name="">
 			<option id="item01" value="">State 01</option>
@@ -44,6 +44,7 @@
 		display: flex;
 		margin-left: 2vw;
 		margin-right: 2vw;
+		font-size: 18px;
 	}
 
 	.panel {
@@ -72,5 +73,19 @@
 		margin-bottom: 5%;
 		height: 5%;
 		font-size: 1rm;
+	}
+
+	#left-panel {
+		width: unset;
+		width: 40%;
+	}
+
+	right-panel {
+		width: unset;
+	}
+
+	select {
+		border-radius: 10px;
+		font-size: 1em;
 	}
 </style>
