@@ -39,18 +39,18 @@
 <style>
 	.app-container {
 		/*text-align: center;*/
-		width: 95vw;
-		height: 90vh;
+		width: 95%;
+		min-height: 95%;
 		display: flex;
-		margin-left: 2vw;
-		margin-right: 2vw;
+		margin-left: 2%;
+		margin-right: 2%;
 		font-size: 18px;
 	}
 
 	.panel {
 		border: 5px solid gray;
 		width: 1000px;
-		height: 75rm;
+		min-height: 95%;
 		margin: 5px 5px;
 		padding: 2% 2%;
 		flex-direction: row wrap;
@@ -68,10 +68,10 @@
 
 	#data-option-list {
 		width: 90%;
+		height: 50px;
 		margin-left: 2%;
 		margin-right: 2%;
 		margin-bottom: 5%;
-		height: 5%;
 		font-size: 1rm;
 	}
 
