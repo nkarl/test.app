@@ -1,38 +1,68 @@
 <!-- App GUI -->
 <script>
-	export let data = [{}, {}];
+	import { onMount } from 'svelte';
+	import axios from 'axios';
+	// export let data = [{}, {}];
+
+	const endpoint = 'https://jsonplaceholder.typicode.com/posts';
+	let posts = [];
+
+	onMount(async function () {
+		/*
+            // Default fetch API
+			const res = await fetch(endpoint);
+			const data = await res.json();
+			posts = data;
+        */
+		try {
+			// axios
+			const res = await axios.get(endpoint);
+			console.log(res.data);
+			posts = res.data;
+		} catch (error) {
+			console.error(error);
+		}
+	});
 </script>
 
 <!-- App GUI -->
 <div style="text-align:center">
 	<h1>Welcome to My Yelp Business Data App!</h1>
 </div>
+
 <div class="app-container">
-	<!-- Welcome Message -->
+	<!-- LEFT PANEL: CITY LIST PER SELECTED STATE -->
 	<div class="panel" id="left-panel">
 		<h2>State List DropDown</h2>
 		<select id="data-option-list" name="">
-			<option id="item01" value="">State 01</option>
-			<option id="item02" value="">State 02</option>
-			<option id="item03" value="">State 03</option>
-			<option id="item04" value="">State 04</option>
-			<option id="item05" value="">State 05</option>
+			{#each Array(5) as _, index (index)}
+				<option id="item0{index + 1}" value="">State 0{index + 1}</option>
+			{/each}
 		</select>
 		<h2>City List</h2>
 		<div class="card">Card 2</div>
 	</div>
+
+	<!-- RIGHT PANEL: BUSINESS LIST PER SELECTED CITY -->
 	<div class="panel">
 		<h2>City List DropDown</h2>
 		<select id="data-option-list" name="">
-			<option id="item01" value="">City 01</option>
-			<option id="item02" value="">City 02</option>
-			<option id="item03" value="">City 03</option>
-			<option id="item04" value="">City 04</option>
-			<option id="item05" value="">City 05</option>
+			{#each Array(5) as _, index (index)}
+				<option id="item0{index}" value="">City 0{index}</option>
+			{/each}
 		</select>
 		<h2>Business List</h2>
 		<div class="card">Card 4</div>
 	</div>
+</div>
+
+<!-- TEST DATA -->
+<div id="test-data" class="panel">
+	{#each posts.slice(0, 5) as article}
+		<div>
+			<p>{article.title}</p>
+		</div>
+	{/each}
 </div>
 
 <!-- Style Sheet -->
@@ -87,5 +117,10 @@
 	select {
 		border-radius: 10px;
 		font-size: 1em;
+	}
+
+	#test-data {
+		display: unset;
+		display: inline-block;
 	}
 </style>
