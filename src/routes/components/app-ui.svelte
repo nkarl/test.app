@@ -60,7 +60,7 @@
 <div id="test-data" class="panel">
 	{#each posts.slice(0, 5) as article}
 		<div>
-			<p>{article.title}</p>
+			<p>{JSON.stringify(article)}</p>
 		</div>
 	{/each}
 </div>
