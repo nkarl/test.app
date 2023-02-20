@@ -5,7 +5,7 @@
 	// export let data = [{}, {}];
 
 	const endpoint = 'https://jsonplaceholder.typicode.com/posts';
-	let posts = [];
+	let posts = [{}];
 
 	onMount(async function () {
 		/*
@@ -14,13 +14,15 @@
 			const data = await res.json();
 			posts = data;
         */
+		// axios
 		try {
-			// axios
 			const res = await axios.get(endpoint);
-			console.log(res.data);
+			/*console.log(res.data);*/
 			posts = res.data;
 		} catch (error) {
 			console.error(error);
+		} finally {
+			console.log('successful fetched data.');
 		}
 	});
 </script>
@@ -56,7 +58,7 @@
 	</div>
 </div>
 
-<!-- TEST DATA -->
+<!-- TEST DATA: first 5 items -->
 <div id="test-data" class="panel">
 	{#each posts.slice(0, 5) as article}
 		<div>
@@ -108,10 +110,6 @@
 	#left-panel {
 		width: unset;
 		width: 40%;
-	}
-
-	right-panel {
-		width: unset;
 	}
 
 	select {
